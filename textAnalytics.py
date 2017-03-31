@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
+import openpyxl
 
-input=raw_input('enter line for text analytics ')
-splitStrings=input.split()
-print splitStrings
+
 
 pCount=0
 nCount=0
 neuCount=0
-positive=['good','nice','intelligent','smart','favourite']
+positive=['love','good','nice','intelligent','smart','favourite']
 negative=['bad','nincompoop']
 neutral=[];
+path="E:\
+college\\bvicam\\4)sem\\dwdm\\text analytics\\cleansed(mail)\\shamsher_clean_data.xlsx"
+wb=openpyxl.load_workbook(path)
+print(wb.get_sheet_names())
+sheet=wb.get_sheet_by_name('Sheet1')
 
+input=sheet['B1'].value
+splitStrings=input.split()
+print splitStrings
 for word in splitStrings:
     #print i
     if word in positive:
@@ -30,5 +37,5 @@ elif nCount>pCount:
         print 'tweet is negative'
     else:
         print 'tweet is neutral'
-#else:
- #   print 'not able to determine'
+else:
+   print 'not able to determine'
